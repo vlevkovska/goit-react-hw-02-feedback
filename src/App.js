@@ -15,6 +15,7 @@ class Counter extends Component {
     this.setState((state) => ({
       [e]: state[e] + 1,
     }));
+    console.log("Кликнули на кнопку");
   };
 
   countTotalFeedback = () => {
