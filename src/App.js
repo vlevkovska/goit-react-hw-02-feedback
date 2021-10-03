@@ -1,19 +1,21 @@
-import React, { Component } from "react";
-import Section from "./Section/Section";
-import Container from "./Container/Container";
-import Statistics from "./Statistics/Statistics";
-import Notification from "./Notification/Notification";
-import FeedbackOptions from "./Feedback/FeedbackOptions";
+import { Component } from "react";
 
-class Counter extends Component {
+import Container from "./Components/Container/Container";
+import Statistics from "./Components/Statistics/Statistics";
+import FeedbackOptions from "./Components/Feedback/FeedbackOptions";
+import Section from "./Components/Section/Section";
+import Notification from "./Components/Notification/Notification";
+
+class App extends Component {
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
   };
-  onLeaveFeedback = (e) => {
+
+  handleClick = (event) => {
     this.setState((state) => ({
-      [e]: state[e] + 1,
+      [event]: state[event] + 1,
     }));
     console.log("Кликнули на кнопку");
   };
@@ -32,14 +34,14 @@ class Counter extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     const obj = Object.keys(this.state);
-    const feedback = this.onLeaveFeedback;
+    const feedback = this.handleClick;
     const total = this.countTotalFeedback();
     const positivePercentage = this.countPositiveFeedbackPercentage();
 
     return (
       <Container>
         <Section title="Please leave feedback">
-          <FeedbackOptions options={obj} onLeaveFeedback={feedback} />
+          <FeedbackOptions options={obj} handleClick={feedback} />
         </Section>
         <h2 title="Statistics"> </h2>
         <Section title="Statistics">
@@ -60,4 +62,4 @@ class Counter extends Component {
   }
 }
 
-export default Counter;
+export default App;
