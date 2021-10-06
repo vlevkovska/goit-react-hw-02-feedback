@@ -1,10 +1,10 @@
-import style from "./FeedbackOptions.module.css";
-import PropTypes from "prop-types";
+import style from './FeedbackOptions.module.css';
+import PropTypes from 'prop-types';
 
 const FeedbackOptions = ({ options, handleClick }) => {
   return (
     <>
-      {options.map((option) => (
+      {options.map(option => (
         <button
           key={option}
           className={style.btn}
@@ -19,7 +19,7 @@ const FeedbackOptions = ({ options, handleClick }) => {
 };
 FeedbackOptions.propTypes = {
   handleClick: PropTypes.func,
-  options: PropTypes.node.isRequired,
+  options: PropTypes.array.isRequired,
 };
 
 export default FeedbackOptions;
